@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actividades del Semestre</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .menu {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .actividad {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .actividad a {
+      text-decoration: none;
+      color: #007bff;
+      margin-right: 10px;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #calcularBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #promedio {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mis Actividades del Semestre - Bernardo Gutiérrez López - 2222904</h1>
+  <div class="menu">
+    <div class="actividad">
+      <a href="MC-2222904-LENGPROG.pdf" target="_blank">Actividad 1 - Examen MC</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="ORDINARIO-LENGPR.pdf" target="_blank">Actividad 2 - Examen Ordinario</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="PIA-2222904-LENGPRO.pdf" target="_blank">Actividad 3 - PIA</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A4-2222904-Gutiérrez López Bernardo-LENGPRO.pdf" target="_blank">Actividad 4 - Reporte conceptos fund.</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A5-2222904-Gutiérrez Bernardo-LENGPROG.pdf" target="_blank">Actividad 5 - Ej. Lenguaje Scrpit</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A6-2222904-Gutiérrez López Bernardo-LENGPRO.pdf" target="_blank">Actividad 6 - Ej. Lenguaje funcional</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A7-2222904-Gutiérrez Bernardo-LENGPRO.pdf" target="_blank">Actividad 7 - Ej. Lenguaje lógico</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A8-Reporte programas imperativos-LENGPRO-2222904.pdf" target="_blank">Actividad 8 - Reporte Prog. Imperativos</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+    <div class="actividad">
+      <a href="A9-Ej.Lenguaje orientado a objetos-LENGPRO.pdf" target="_blank">Actividad 9 - Ej. Lenguaje Orientado a Objetos</a>
+      <input type="number" min="0" max="100" class="nota" placeholder="Calificación">
+    </div>
+
+    <button id="calcularBtn">Calcular Promedio</button>
+    <div id="promedio"></div>
+  </div>
+
+  <script>
+  document.getElementById("calcularBtn").addEventListener("click", function () {
+    const notas = document.querySelectorAll(".nota");
+
+    const pesos = [0.25, 0.25, 0.20, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05];
+
+    let sumaPonderada = 0;
+    let sumaPesos = 0;
+
+    notas.forEach((nota, index) => {
+      const valor = parseFloat(nota.value);
+      if (!isNaN(valor)) {
+        sumaPonderada += valor * pesos[index];
+        sumaPesos += pesos[index];
+      }
+    });
+
+    const promedio = sumaPesos > 0 ? (sumaPonderada / sumaPesos).toFixed(2) : 0;
+    document.getElementById("promedio").textContent = "Promedio ponderado: " + promedio;
+  });
+</script>
+
+</body>
+</html>
